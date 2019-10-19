@@ -24,7 +24,7 @@ namespace Client_Server_Chat
             };
             nextId++;
 
-            SendMsg(": " + user.Name + " подключился к чату!", 0);
+            SendMsg(": " + user.Name + " connect to the server!", 0);
             users.Add(user);
             return user.ID;
         }
@@ -35,7 +35,7 @@ namespace Client_Server_Chat
             if (user != null)
             {
                 users.Remove(user);
-                SendMsg(": " + user.Name + " покинул чат!", 0);
+                SendMsg(": " + user.Name + " disconnect from the server!", 0);
             }
         }
 
