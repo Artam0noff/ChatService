@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="44" Margin="189,10,0,0" TextWrapping="Wrap" Text="UserName" VerticalAlignment="Top" Width="561"/>
-        <Button x:Name="CB" Content="connect" HorizontalAlignment="Left" Height="39" Margin="29,15,0,0" VerticalAlignment="Top" Width="135"/>
-        <ListBox HorizontalAlignment="Left" Height="239" Margin="10,78,0,0" VerticalAlignment="Top" Width="740"/>
-        <TextBox HorizontalAlignment="Left" Height="73" Margin="10,336,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="512"/>
-        <Button Content="IMG" HorizontalAlignment="Left" Height="43" Margin="548,336,0,0" VerticalAlignment="Top" Width="60"/>
-        <Button Content="audio" HorizontalAlignment="Left" Height="43" Margin="626,336,0,0" VerticalAlignment="Top" Width="48"/>
+        <TextBox x:Name="tbUserName" HorizontalAlignment="Left" Height="44" Margin="189,10,0,0" TextWrapping="Wrap" Text="UserName" VerticalAlignment="Top" Width="561"/>
+        <Button x:Name="CB" Click="Button_Click" Content="Connect" HorizontalAlignment="Left" Height="39" Margin="29,15,0,0" VerticalAlignment="Top" Width="135"/>
+        <ListBox x:Name="LB_Chat" HorizontalAlignment="Left" Margin="10,78,0,102" Width="740"/>
+        <TextBox x:Name="tb_Msg" HorizontalAlignment="Left" Height="73" Margin="10,336,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="512"/>
+        <Button x:Name="ImgButt" Content="IMG" HorizontalAlignment="Left" Height="43" Margin="548,336,0,0" VerticalAlignment="Top" Width="60"/>
+        <Button x:Name="AudioButt" Content="audio" HorizontalAlignment="Left" Height="43" Margin="626,336,0,0" VerticalAlignment="Top" Width="48"/>
 
     </Grid>
 </Window>

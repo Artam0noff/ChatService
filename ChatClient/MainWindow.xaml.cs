@@ -18,11 +18,50 @@ namespace ChatClient
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window , ServiceChat.IServiceChatCallback
     {
+        bool IsConnected = false;
+        ServiceChat.ServiceChatClient client;
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        void ConnectUser()
+        {
+            if(!IsConnected)
+            {
+                IsConnected = true;
+                CB.Content = "Disconnect";
+                tbUserName.IsEnabled = false;
+            }
+        }
+
+        void DisconnectUser()
+        {
+            if (IsConnected)
+            {
+                IsConnected = false;
+                CB.Content = "Connect";
+                tbUserName.IsEnabled = true;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsConnected)
+                ConnectUser();
+            else
+                DisconnectUser();
+        }
+
+        public void MsgCallback(string msg)
+        {
+            LB_Chat.Items.Add(msg);
+            throw new NotImplementedException();
+        }
     }
+
+
 }
