@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ChatClient.ServiceChat;
 
 namespace ChatClient
 {
@@ -22,7 +23,7 @@ namespace ChatClient
     {
         bool IsConnected = false;
         ServiceChat.ServiceChatClient client;
-
+        int ID;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace ChatClient
         {
             if(!IsConnected)
             {
+                ID = client.Connect(tbUserName.Text);
                 IsConnected = true;
                 CB.Content = "Disconnect";
                 tbUserName.IsEnabled = false;
@@ -42,6 +44,7 @@ namespace ChatClient
         {
             if (IsConnected)
             {
+                client.Disconnect(ID);
                 IsConnected = false;
                 CB.Content = "Connect";
                 tbUserName.IsEnabled = true;
@@ -59,7 +62,32 @@ namespace ChatClient
         public void MsgCallback(string msg)
         {
             LB_Chat.Items.Add(msg);
-            throw new NotImplementedException();
+            LB_Chat.ScrollIntoView(LB_Chat.Items[LB_Chat.Items.Count - 1]);
+            
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            client = new ServiceChat.ServiceChatClient(new System.ServiceModel.InstanceContext(this));
+
+        }
+
+        private void Tb_Msg_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Enter)
+            {
+                if (IsConnected)
+                {
+                    client.SendMsg(tb_Msg.Text, ID);
+                    tb_Msg.Text = string.Empty;
+                }
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(IsConnected)
+            client.Disconnect(ID);
         }
     }
 
