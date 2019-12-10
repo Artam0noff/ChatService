@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Microsoft.Win32;
+using System.Drawing;
 
 namespace Client_Server_Chat
 {
@@ -19,12 +21,20 @@ namespace Client_Server_Chat
         [OperationContract(IsOneWay = true)]
         void SendMsg(string msg, int id);
 
+        [OperationContract(IsOneWay = true)]
+        void SendImg(byte[] img, int id);
+
+
     }
 
     public interface IServerChatCallback
     {
         [OperationContract(IsOneWay = true)]
         void MsgCallback(string msg);
+
+        [OperationContract(IsOneWay = true)]
+        void ImgCallback(byte[] img);
+
     }
 
 }

@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ChatClient.ServiceChat;
+using Microsoft.Win32;
+using System.Drawing;
+using System.IO;
+
 
 namespace ChatClient
 {
@@ -33,12 +37,16 @@ namespace ChatClient
         {
             if(!IsConnected)
             {
-                ID = client.Connect(tbUserName.Text);
-                IsConnected = true;
-                CB.Content = "Disconnect";
-                tbUserName.IsEnabled = false;
+  
+               
+                    ID = client.Connect(tbUserName.Text);
+                    IsConnected = true;
+                    CB.Content = "Disconnect";
+                    tbUserName.IsEnabled = false;
+               
+
             }
-        }
+            }
 
         void DisconnectUser()
         {
@@ -66,6 +74,16 @@ namespace ChatClient
             
         }
 
+        public void ImgCallback(byte[] img)
+        {
+            Image image = new Image();
+            var bi = LoadImage(img);
+            var targetBitmap = new TransformedBitmap(bi, new ScaleTransform(0.1, 0.1));
+            image.Source = targetBitmap;
+            LB_Chat.Items.Add(image);
+        }
+
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             client = new ServiceChat.ServiceChatClient(new System.ServiceModel.InstanceContext(this));
@@ -89,6 +107,67 @@ namespace ChatClient
             if(IsConnected)
             client.Disconnect(ID);
         }
+
+        private void ImgButt_Click(object sender, RoutedEventArgs e)
+        {
+            if (IsConnected)
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.DefaultExt = ".jpeg";
+                Nullable<bool> result = dlg.ShowDialog();
+
+                // Process open file dialog box results
+                if (result == true)
+                {
+                    // Open document
+
+                    string filename = dlg.FileName;
+                    
+                    BitmapImage bi = new BitmapImage(new Uri(filename));
+
+
+
+                    byte[] img = getJPGFromImageControl(bi);
+                    client.SendImg(img, ID);
+
+
+                }
+            }
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+           
+        }
+
+
+        public byte[] getJPGFromImageControl(BitmapImage imageC)
+        {
+            MemoryStream memStream = new MemoryStream();
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(imageC));
+            encoder.Save(memStream);
+            return memStream.ToArray();
+        }
+
+        private static BitmapImage LoadImage(byte[] imageData)
+        {
+            if (imageData == null || imageData.Length == 0) return null;
+            var image = new BitmapImage();
+            using (var mem = new MemoryStream(imageData))
+            {
+                mem.Position = 0;
+                image.BeginInit();
+                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.UriSource = null;
+                image.StreamSource = mem;
+                image.EndInit();
+            }
+            image.Freeze();
+            return image;
+        }
+
     }
 
 

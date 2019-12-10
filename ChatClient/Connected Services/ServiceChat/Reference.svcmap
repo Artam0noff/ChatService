@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6034f2d3-b958-468f-8bc3-7b898806c7be" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e7a06a32-2504-4ebf-a421-ea7947d3fb03" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/Client_Server_Chat/ServiceChat/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="ed45861d-0c4d-4269-b2c5-0d69aaf591f1" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Client_Server_Chat/ServiceChat/?xsd=xsd0" />
-    <MetadataFile FileName="ServiceChat.wsdl" MetadataType="Wsdl" ID="3e608437-1557-4473-ba7c-874689c43bfa" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Client_Server_Chat/ServiceChat/?wsdl" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="b9382b94-1408-406a-8b39-c3f993f60141" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Client_Server_Chat/ServiceChat/?xsd=xsd1" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="268cbe97-f690-4daf-829c-87fe5fc0b456" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Client_Server_Chat/ServiceChat/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="8287efb1-adf8-4840-9ec5-2e36aae7e2d5" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Client_Server_Chat/ServiceChat/?xsd=xsd0" />
+    <MetadataFile FileName="ServiceChat.wsdl" MetadataType="Wsdl" ID="c6530d79-da4c-4894-8872-c646137d3245" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Client_Server_Chat/ServiceChat/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="37287d8c-e407-4531-a271-a82566edd928" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Client_Server_Chat/ServiceChat/?xsd=xsd1" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="412d0f6d-ef35-4b5c-89e2-ec03853d984c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Client_Server_Chat/ServiceChat/?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

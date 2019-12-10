@@ -39,6 +39,7 @@ namespace Client_Server_Chat
             }
         }
 
+
         public void SendMsg(string msg, int id)
         {
             foreach (var item in users)
@@ -54,5 +55,16 @@ namespace Client_Server_Chat
                 item.operationContext.GetCallbackChannel<IServerChatCallback>().MsgCallback(answer);
             }
         }
+
+        public void SendImg(byte[] img, int id)
+        {
+            foreach(var item in users)
+            {
+
+                item.operationContext.GetCallbackChannel<IServerChatCallback>().ImgCallback(img);
+
+            }
+        }
+
     }
 }
